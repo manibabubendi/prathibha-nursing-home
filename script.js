@@ -31,7 +31,11 @@ if (appointmentForm) {
     const formData = Object.fromEntries(new FormData(form));
 
     if (window.location.protocol === 'file:') {
-      message.textContent = 'Please open this website at http://localhost:3000 so appointments can be sent.';
+      const subject = encodeURIComponent(`Gynaecology appointment request — ${formData.name}`);
+      const body = encodeURIComponent(`New Gynaecology appointment request\n\nName: ${formData.name}\nPhone: ${formData.phone}\nService: ${formData.service}`);
+      window.location.href = `mailto:manibabubendi@gmail.com?subject=${subject}&body=${body}`;
+      message.textContent = 'Your email app will open with the appointment request ready to send.';
+      form.reset();
       return;
     }
 

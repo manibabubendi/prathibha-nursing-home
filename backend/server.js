@@ -68,4 +68,4 @@ app.get("/", (request, response) => {
     response.sendFile(path.join(__dirname, "..", "index.html"));
 });
 
-app.listen(port, () => console.log(`Prathibha Nursing Home website is running at http://localhost:${port}`));
+app.listen(port, '0.0.0.0' () => console.log(`Prathibha Nursing Home website is running at http://localhost:${port}`));
